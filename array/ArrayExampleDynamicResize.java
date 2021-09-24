@@ -1,8 +1,4 @@
 /*
-   I det här exemplet utökar vi en array genom att skapa en tillfällig ("temporary") array 
-   som är ett steg större än den nuvarande, och lägger till den nya filmen sist i den
-   tillfälliga arrayen. Sen ersätter vi den nuvarande arrayen (favoriteMovies) med den tillfälliga arrayen.
-
    Filmerna kommer sparas i en array
    Skapa en meny där användaren får välja mellan lite olika val:
      * Användaren ska kunna lägga in nya filmer i arrayen
@@ -35,13 +31,17 @@ public class ArrayExampleDynamicResize {
             System.out.println("1) Lägg in ny film");
             System.out.println("2) Lista alla filmer");
             System.out.println("3) Avsluta programmet");
+            System.out.println("4) Lägg till film och lista filmerna");
             System.out.print("> ");
 
             int menuChoice = 0;
+
+            // Sätt alla menyval till "false" tills användaren gjort ett aktivt val
             boolean menuChoiceAddMovie = false;
             boolean menuChoiceListMovies = false;
             boolean menuChoiceQuitProgram = false;
 
+            // Välj menyalternativ
             try {
                 menuChoice = Integer.parseInt(keyboardInput.nextLine());
             } catch (Exception e) {
@@ -52,6 +52,7 @@ public class ArrayExampleDynamicResize {
                 System.out.println("Du har valt: " + menuChoice);
             }
 
+            // Ta valet och ställ om kodflödet
             switch (menuChoice) {
                 case 1: // Lägg in ny film
                     menuChoiceAddMovie = true;
@@ -60,8 +61,11 @@ public class ArrayExampleDynamicResize {
                     menuChoiceListMovies = true;
                     break;
                 case 3: // Avsluta program
-                    System.out.println("Avsluta program");
                     menuChoiceQuitProgram = true;
+                    break;
+                case 4: // Lägg till film och lista filmerna
+                    menuChoiceAddMovie = true;
+                    menuChoiceListMovies = true;
                     break;
                 default:
                     System.out.println("Felaktigt menyval.");
@@ -78,12 +82,19 @@ public class ArrayExampleDynamicResize {
                 temporaryFavoriteMovies[favoriteMovies.length] = newMovieTitle;
 
                 favoriteMovies = temporaryFavoriteMovies;
-            } else if (menuChoiceListMovies) {
+            }
+
+            if (menuChoiceListMovies) {
                 System.out.println("Alla filmer:");
 
                 for (int index = 0; index < favoriteMovies.length; index++) {
                     System.out.println("* " + favoriteMovies[index]);
                 }
+            }
+
+            if (menuChoiceQuitProgram) {
+                System.out.println("Avsluta program");
+                programRunning = false;
             }
         }
 
