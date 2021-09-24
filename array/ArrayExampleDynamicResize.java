@@ -1,4 +1,8 @@
 /*
+   I det här exemplet utökar vi en array genom att skapa en tillfällig ("temporary") array 
+   som är ett steg större än den nuvarande, och lägger till den nya filmen sist i den
+   tillfälliga arrayen. Sen ersätter vi den nuvarande arrayen (favoriteMovies) med den tillfälliga arrayen.
+
    Filmerna kommer sparas i en array
    Skapa en meny där användaren får välja mellan lite olika val:
      * Användaren ska kunna lägga in nya filmer i arrayen
