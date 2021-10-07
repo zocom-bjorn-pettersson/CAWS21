@@ -42,11 +42,11 @@ public class CaesarCipherExample {
         String caesarString = caesar(plaintext, 3);
 
         // The unciphered message
-        String caesarStringUnciphered = caesar(caesarString, -3);
+        String caesarStringDeciphered = caesar(caesarString, -3);
 
         System.out.println(plaintext);
         System.out.println(caesarString);
-        System.out.println(caesarStringUnciphered);
+        System.out.println(caesarStringDeciphered);
     }
     
     public static String caesar(String message, int shuffle) {
